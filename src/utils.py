@@ -148,7 +148,7 @@ def sigma_clip(object_list, flat_darkcor_data_out):
 
 
     for img in object_list:
-        data = flat_darkcor_data_out[img][450:1050,850:1450]
+        data = flat_darkcor_data_out[img][450:1050,850:1450] # [400:1000,1050:1650]
         print(img)
         #create a new array
         data2 = np.zeros((600,600))
@@ -168,13 +168,20 @@ def sigma_clip(object_list, flat_darkcor_data_out):
 
 
 def weighted_centroid(image):
+    # x_s = 200
+    # y_s = 100
+    # image = image[y_s:400, x_s:400]
     threshold = np.median(image) + 3 * np.std(image)  # set threshold to 3 sigma above median
     binary_mask = np.where(image > threshold, 1, 0)  # create binary mask
     total_flux = np.sum(binary_mask)  # calculate total flux of star
     x, y = np.meshgrid(np.arange(image.shape[1]), np.arange(image.shape[0]))  # create x and y grids
-    x0 = np.sum(x * binary_mask) / total_flux  # calculate x centroid
-    y0 = np.sum(y * binary_mask) / total_flux  # calculate y centroid
-    return round(x0), round(y0)
+    x0 = np.sum(x * binary_mask) / total_flux # calculate x centroid
+    y0 = np.sum(y * binary_mask) / total_flux # calculate y centroid
+
+    plt.imshow(image)
+    plt.scatter(x0, y0, c='r', s=20)
+    plt.show()
+    return round(x0), round(y0)  # round(x0 + x_s), round(y0 + y_s)
 
 def image_shift(object_list, center, sky_flat_darkcor_data_out, datadir):
     #Want to write something that checks all of these and finds the one with the highest S/N ratio

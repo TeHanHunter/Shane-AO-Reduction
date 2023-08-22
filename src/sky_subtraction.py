@@ -33,7 +33,6 @@ def make_master_sky(object_list, flat_darkcor_sigmacut_data, datadir):
             else:
                 continue
         exp_dict[time] = newlist
-
     master_sky_dict = {}  # dictionary of master skys for each exposure time
     for time in exposuretimes:
         print('Sky Subtracting images with exp time = ' + str(time) + ' s')
@@ -46,7 +45,7 @@ def make_master_sky(object_list, flat_darkcor_sigmacut_data, datadir):
         ### we assume the first image is taken at center position, we use that to constrain the positions.
         first_im = min([int(key[1:5]) for key in flat_darkcor_sigmacut_data.keys()])
         x1, y1 = weighted_centroid(flat_darkcor_sigmacut_data[f's{first_im:04d}.fits'])
-        # print('center position: ', x1, y1)
+        print('center position: ', x1, y1)
         for im in exp_dict[time]:  # for now just checking via centroid position
             # x0,y0,sigma,A = guess_gaussian_parameters(flat_darkcor_sigmacut_data[im])
             x0, y0 = weighted_centroid(flat_darkcor_sigmacut_data[im])
