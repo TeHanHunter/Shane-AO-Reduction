@@ -166,17 +166,21 @@ def sigma_clip(object_list, flat_darkcor_data_out):
 
     return flat_darkcor_sigmacut_data
 
-
-def weighted_centroid(image):
-    # x_s = 200
-    # y_s = 100
-    # image = image[y_s:400, x_s:400]
-    threshold = np.median(image) + 3 * np.std(image)  # set threshold to 3 sigma above median
-    binary_mask = np.where(image > threshold, 1, 0)  # create binary mask
+def weighted_centroid(image, percentile=99, window_size=100):
+    threshold = np.percentile(image, percentile)
+    binary_mask = np.where(image > threshold, 1, 0)
+    max_idx = np.unravel_index(np.argmax(image * binary_mask), image.shape)
+    xmin = max(0, max_idx[1] - window_size // 2)
+    xmax = min(image.shape[1], max_idx[1] + window_size // 2 + 1)
+    ymin = max(0, max_idx[0] - window_size // 2)
+    ymax = min(image.shape[0], max_idx[0] + window_size // 2 + 1)
+    window = image[ymin:ymax, xmin:xmax]
+    threshold = np.median(window) + 3 * np.std(window)
+    binary_mask = np.where(window > threshold, 1, 0)
     total_flux = np.sum(binary_mask)  # calculate total flux of star
-    x, y = np.meshgrid(np.arange(image.shape[1]), np.arange(image.shape[0]))  # create x and y grids
-    x0 = np.sum(x * binary_mask) / total_flux # calculate x centroid
-    y0 = np.sum(y * binary_mask) / total_flux # calculate y centroid
+    x, y = np.meshgrid(np.arange(window.shape[1]), np.arange(window.shape[0]))  # create x and y grids
+    x0 = np.sum(x * binary_mask) / total_flux + xmin # calculate x centroid
+    y0 = np.sum(y * binary_mask) / total_flux + ymin # calculate y centroid
 
     plt.imshow(image)
     plt.scatter(x0, y0, c='r', s=20)
