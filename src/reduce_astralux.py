@@ -128,9 +128,9 @@ def fitPSF(d,x0,y0,sigma,A):
 #################### USER DEFINITIONS #######################
 
 if __name__ == '__main__':
-    data_folder = '/home/tehan/Documents/ShaneAO/20210226/20210226_results/'
+    data_folder = '/Users/tehan/Downloads/'
     # files = glob.glob(f'{data_folder}*.fits')
-    files = glob.glob(f'{data_folder}TOI_2120_final.fits')
+    files = glob.glob(f'{data_folder}TIC233574265_final.fits')
     for i in range(len(files)):
         filename = os.path.basename(files[i])
         # Minimum magnitude contrast to be explored:
