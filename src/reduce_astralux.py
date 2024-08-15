@@ -154,55 +154,49 @@ if __name__ == '__main__':
 
         # If not already done, model the input image. If already done,
         # obtain saved data:
-        # if not os.path.exists(out_dir+'/model_image.fits'):
-        print('\t > Modelling the PSF...')
-        # First, extract image data:
-        d,h = fits.getdata(data_folder+filename, header=True)
-        # print(np.shape(d))
+        if not os.path.exists(out_dir+'/model_image.fits'):
+            print('\t > Modelling the PSF...')
+            # First, extract image data:
+            d,h = fits.getdata(data_folder+filename, header=True)
+            # print(np.shape(d))
 
-        # Guess centroid by maximum intensity; also estimate approximate
-        # width of the PSF by weighted median-absolute distance from the
-        # estimated center and use it to estimate amplitude:
-        x0,y0,sigma,A = guess_gaussian_parameters(d)
-        # sigma = 30.0 #Use this if you're getting fwhm of 0
-        # print(x0,y0,sigma,A)
-        # Estimate model of moffat + rotated gaussian:
-        out_params = fitPSF(d,x0,y0,sigma,A)
-        # Save output parameters:
-        #fout = open(out_dir+'/out_params.pkl','wb')
-        #pickle.dump(out_params,fout)
-        #fout.close()
+            # Guess centroid by maximum intensity; also estimate approximate
+            # width of the PSF by weighted median-absolute distance from the
+            # estimated center and use it to estimate amplitude:
+            x0,y0,sigma,A = guess_gaussian_parameters(d)
+            # sigma = 30.0 #Use this if you're getting fwhm of 0
+            # print(x0,y0,sigma,A)
+            # Estimate model of moffat + rotated gaussian:
+            out_params = fitPSF(d,x0,y0,sigma,A)
+            # Save output parameters:
+            fout = open(out_dir+'/out_params.pkl','wb')
+            pickle.dump(out_params,fout)
+            fout.close()
 
-        # Generate model image:
-        model = modelPSF(out_params,\
-                               np.meshgrid(np.arange(d.shape[0]),np.arange(d.shape[1])))
-        # Generate residual image:
-        res = model - d
-
-        # Save images:
-        print('\t > Saving results...')
-        fits.PrimaryHDU(model).writeto(out_dir+'/model_image.fits', overwrite=True)
-        fits.PrimaryHDU(d).writeto(out_dir+'/original_image.fits', overwrite=True)
-        fits.PrimaryHDU(res).writeto(out_dir+'/residual_image.fits', overwrite=True)
-        # else:
-        #     print('\t > PSF already modelled. Extracting data...')
-        #     # If everything already done, read data:
-        #     model = fits.getdata(out_dir+'model_image.fits')
-        #     d = fits.getdata(out_dir+'original_image.fits')
-        #     res = fits.getdata(out_dir+'residual_image.fits')
-        #     par = open(out_dir+'out_params.pkl','r')
-        #     out_params = pickle.load(par)
-        #     par.close()
-
+            # Generate model image:
+            model = modelPSF(out_params,\
+                                   np.meshgrid(np.arange(d.shape[0]),np.arange(d.shape[1])))
+            # Generate residual image:
+            res = model - d
+            # Save images:
+            print('\t > Saving results...')
+            fits.PrimaryHDU(model).writeto(out_dir+'/model_image.fits', overwrite=True)
+            fits.PrimaryHDU(d).writeto(out_dir+'/original_image.fits', overwrite=True)
+            fits.PrimaryHDU(res).writeto(out_dir+'/residual_image.fits', overwrite=True)
+        else:
+            print('\t > PSF already modelled. Extracting data...')
+            # If everything already done, read data:
+            model = fits.getdata(out_dir+'model_image.fits')
+            d = fits.getdata(out_dir+'original_image.fits')
+            res = fits.getdata(out_dir+'residual_image.fits')
+            out_params = pickle.load(open(out_dir+'out_params.pkl','rb'))
         # Define the step in radius at which we will calculate the contrasts. This is
         # calculated in terms of the "effective FWHM", which we calculate numerically from
         # the model PSF, by trying different radii and angles and finding the positions at which
         # the flux is half the peak flux.
         max_flux_model = np.max(model)
-        print(max_flux_model)
         #radii = np.linspace(0,50.,100) #alternate for trouble targets
-        radii = np.linspace(0,5.*((out_params['sigma_x'].value+out_params['sigma_y'].value)/2.),100)
-        print(radii)
+        radii = np.linspace(0,10.*((out_params['sigma_x'].value+out_params['sigma_y'].value)),100)
         thetas = np.linspace(0,2*np.pi,100)
         fwhms = np.zeros(len(thetas))
         for j in range(len(thetas)):
@@ -339,16 +333,16 @@ if __name__ == '__main__':
         fig, ax1 = plt.subplots(figsize=(5, 4))
         # print(np.where(radial_profile['col2'] > 0))
         ax1.plot(radii,contrast,color='black', label='Magnitude Contrast')
-        ax1.set_ylim(6, 2)
+        ax1.set_ylim(4, 2)
         # ax1.set_xlim(-0.05, 1.5)
         ax2 = fig.add_axes([0.48, 0.45, 0.4, 0.4])
         # print(hdul[0].header)
         ax2.imshow(d, origin='lower')  # , cmap='RdGy_r', vmin=-1, vmax=1
         ax2.hlines(210, 255, 345, colors='w')
-        ax2.text(333, 185, r"$3''$", ha='center', c='w')
+        ax2.text(300, 140, r"$3''$", ha='center', c='w')
         width = 96
-        ax2.set_ylim(y0-width, y0+width)
-        ax2.set_xlim(x0-width, x0+width)
+        # ax2.set_ylim(y0-width, y0+width)
+        # ax2.set_xlim(x0-width, x0+width)
         ax2.set_xticklabels([])
         ax2.set_yticklabels([])
         ax2.tick_params(axis='y', left=False)
