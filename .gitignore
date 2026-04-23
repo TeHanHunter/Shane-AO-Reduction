@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Virtual envs
+.venv*/
+venv/
+env/
+
+# IDE / OS
+.idea/
+.DS_Store
+.Rhistory
+
+# Raw data archives and extracted nights — large, kept out of git
+Raw_Data/*.tar
+Raw_Data/*.tar.xz
+Raw_Data/data-*-AO-Paul.Robertson/
+Raw_Data/_reference/
+Raw_Data/Test_Data/
