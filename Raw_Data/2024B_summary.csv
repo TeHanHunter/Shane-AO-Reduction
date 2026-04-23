@@ -1,0 +1,50 @@
+night,target,tic_id,filters_planned,filters_produced,n_frames_observed,n_frames_vetoed,result,final_fits_path,notes
+20240819,TIC_189571727,189571727,Ks,Ks,80,0,ok,Raw_Data/2024B_Results/20240819/TIC_189571727_final.fits,Bit overexposed | Even more overexposed; clearly conditions are still variable.
+20240819,TIC_285181196,285181196,"J,Ks","J,Ks",99,0,ok,Raw_Data/2024B_Results/20240819/TIC_285181196_final_filter_J.fits;Raw_Data/2024B_Results/20240819/TIC_285181196_final_filter_Ks.fits,"Looks good, but taking another to be sure | Binary!"
+20240819,TIC_298559217,298559217,"J,Ks",J,100,0,ok,Raw_Data/2024B_Results/20240819/TIC_298559217_final_filter_J.fits,"~10K counts | ~30K counts; transparency/seeing variations? | Looks like potentially 2 additional objects | 163, 176-179 overexposed.  Looks like maybe a third object in the first dither? | 191 overexposed | Very underexposed, but is it just seeing fluctuations? | This looks better.  Fingers crossed."
+20240819,TIC_313874586,313874586,"J,Ks",J,183,0,ok,Raw_Data/2024B_Results/20240819/TIC_313874586_final_filter_J.fits,Looks like a second object just at the edge of the FOV in the center position.
+20240819,TIC_346416638,346416638,Ks,,81,0,failed,,"Overexposed | 263,274-288 overexposed | Still a bit overexposed | All overexposed.  Variable conditions driving me nuts"
+20240819,TIC_352409577,352409577,Ks,Ks,91,0,ok,Raw_Data/2024B_Results/20240819/TIC_352409577_final.fits,
+20240819,TIC_60922830,60922830,Ks,Ks,62,0,ok,Raw_Data/2024B_Results/20240819/TIC_60922830_final.fits,
+20240819,TIC_71038757,71038757,Ks,Ks,46,0,ok,Raw_Data/2024B_Results/20240819/TIC_71038757_final.fits,"Doing a shorter sequence b/c approaching daylight. 874, 878-879, 889 overexposed"
+20240820,TIC_17540944,17540944,J,Ks,43,0,ok,Raw_Data/2024B_Results/20240820/TIC_17540944_final.fits,4k | 6k | 10k | 8k-13k
+20240820,TIC_192415411,192415411,Ks,Ks,42,0,ok,Raw_Data/2024B_Results/20240820/TIC_192415411_final.fits,"10k. This one is really faint. Give it a try. Ok not as faint as we labeled. Shoulf be Rmag 13.7 | 8k | 10k,8k, 370 4k, 2 far companions seen (known)"
+20240820,TIC_233574265,233574265,J,Ks,18,1,ok,Raw_Data/2024B_Results/20240820/TIC_233574265_final.fits,"? too low | 3k | 16k | 8-12k, dropped to 6k at the end, but still high SNR"
+20240820,TIC_283410775,283410775,J,,96,92,failed,,"40k, way too high. | 30k | 20k | 4k... | 6k | 25k, flucturaing conditions. | 8k to start, 10k, a couple ~15k, 235 20k, 238 2k, 30k at times, aborted the last position, too many overexposures."
+20240820,TIC_299496195,299496195,"J,Ks","J,Ks",38,6,ok,Raw_Data/2024B_Results/20240820/TIC_299496195_final_filter_J.fits;Raw_Data/2024B_Results/20240820/TIC_299496195_final_filter_Ks.fits,"close binary again. Also very close in brightness in Ks. 4k | 11k | mostly ok. the star in the northeast might be a double star? It looks double peaked. Definitely more elongated than the other one. | 6k | 12k | Still have some time, doing another round"
+20240820,TIC_427314633,427314633,J,Ks,19,4,ok,Raw_Data/2024B_Results/20240820/TIC_427314633_final.fits,"1800 | 5k | 8k | 10k | 10k,15k, nice and stable"
+20240820,TIC_441056236,441056236,"J,Ks","J,Ks",85,0,ok,Raw_Data/2024B_Results/20240820/TIC_441056236_final_filter_J.fits;Raw_Data/2024B_Results/20240820/TIC_441056236_final_filter_Ks.fits,"close binaries of similar brightness. Ask operators to confirm we are looking at the correct target. Confirmed. It's hard to say which one is our primary star. | 4k | 12k | 15k seen once, mostly 8k-12k. The binaries are really close in Ks brightness. 429/440 20k | 7k | 11k | 13k, 474 20k,"
+20240820,TIC_89502706,89502706,Ks,Ks,61,0,ok,Raw_Data/2024B_Results/20240820/TIC_89502706_final.fits,"10k | 8-12k, faint far companion at dithering 1"
+20241016,TIC_281571049,281571049,Ks,Ks,33,0,ok,Raw_Data/2024B_Results/20241016/TIC_281571049_final.fits,"crowded region, took awhile to recognize the target. 6k | 13k,15k | 240 16k, 244 17k, 245 18k, 246 20k, 249 25k dither position 3 useless. Let's hope 4 will work. Yeah most of position 4 is ok"
+20241016,TIC_299496195,299496195,Ks,,5,0,failed,,"4k BINARY! | 8k Again the brightness looks similar | 13k, too close and not most optimal for wfs | ENDED at 263"
+20241016,TIC_352409590,352409590,"J,Ks","J,Ks",23,0,ok,Raw_Data/2024B_Results/20241016/TIC_352409590_final_filter_J.fits;Raw_Data/2024B_Results/20241016/TIC_352409590_final_filter_Ks.fits,"1.5k | 12k start dithering | 12k,15k,15k,12k, 177 16k, 180 17k, 184 16k | 6k | 12k | 190 18k"
+20241016,TIC_388814426,388814426,Ks,Ks,23,0,ok,Raw_Data/2024B_Results/20241016/TIC_388814426_final.fits,"Close to the moon, but red enough for wfs. 18k | 13k,10k | several (214) are right at 15k"
+20241016,TO-6158,,Ks,,10,0,failed,,fresh background taken in the middle. seems to be hanging on. 
+20241016,TOI-6158,,Ks,,2,0,failed,,"6k, very faint, probably only tip/tilt correction, but a round star nonetheless! | 11k, only 1k delta flux"
+20241017,TIC_283410775,283410775,"J,Ks",J,131,71,ok,Raw_Data/2024B_Results/20241017/TIC_283410775_final_filter_J.fits,"This was observed, a far companion was seen but not fully. No better target with all the pointing limitations.  | Moved the target to the side to show the companion. Worked. | Closing any minute. Just take as many as I can. Some 12k some 17k | conditions improved. Thinking about dithering with smaller scale at 3''. Try to include the companion in the field with dithering. | Around 8k. Just to be s"
+20241017,TIC_388814426,388814426,J,,3,3,failed,,"only 400.  | 5k, not bad. First time taking this long of an exposure. The wind was kind to me. | closing... Wind average 49mph>45mph closure"
+20241017,TOI-6158,,Ks,,3,2,failed,,"Lost the star | Try locking in again, failed | Try again. No"
+20241217,TIC_117880865,117880865,Ks,,6,0,no_data,,All junk--wind
+20241217,TIC_12632044,12632044,Ks,,17,0,no_data,,"Tried to do a script, but encountered multiple problems, mainly telescope drive control.  Aborted, these are all junk."
+20241217,TIC_172572159,172572159,"J,Ks",,20,0,no_data,,
+20241217,TIC_257397333,257397333,Ks,,12,0,no_data,,Seeing looks awful; ~4k peak counts
+20241217,TIC_283866910,283866910,Ks,,11,0,no_data,,304-307 overexposed
+20241217,TIC_352409590,352409590,Ks,,11,0,no_data,,~6k counts | ~8k counts
+20241217,TIC_35760711,35760711,Ks,,11,0,no_data,,~10K peak counts
+20241217,TIC_364898,364898,"J,Ks",,73,0,no_data,,"Faint secondary about 15"" away? 332-333, 337, 340, 343-344, 352, 355 overexposed | 374, 385, 396 overexposed"
+20241217,TIC_435903839,435903839,Ks,,11,0,no_data,,
+20241217,TIC_60764070,60764070,Ks,,5,0,no_data,,"Tried to run a script, but 403-404 wrecked by wind, aborting"
+20241217,TIC_77552918,77552918,Ks,,1,0,no_data,,Garbage; too much wind
+20241219,TIC_10056120,10056120,Ks,,28,0,no_data,,"Try something in the north. This is faint. 10k | 13k, 433 19k, 434 20k, 435 aborted. Condition improved and overexposed. | 10k | Redid background after this | Done, no problem"
+20241219,TIC_117880865,117880865,Ks,,13,0,no_data,,"3k | 11k | 419 17k, 427 is bad, aborted 428, might be wind. This might be enough"
+20241219,TIC_148251101,148251101,"J,Ks",,128,0,no_data,,"AO not perfect, reopen the loop | 6k | 13k-16k | 12k | Seems like a small bump to the west; The bump looks less prominent at the second dithering position. The bump might be an AO artifact.  | Try a J and see. Not seeing a binary (4k counts) | Still very round."
+20241219,TIC_149766251,149766251,Ks,,32,0,no_data,,"Wrong coords, wasted 10 minutes here. 14k | 13k | good"
+20241219,TIC_151058955,151058955,Ks,,93,0,no_data,,"25k | 8k,10k | Some fluctuations. Object round."
+20241219,TIC_265168621,265168621,Ks,,25,0,no_data,,"3k | 10k | aborted, cloud | 12k | Holding on. Fresh bg. | 477 15k, aborted the last two"
+20241219,TIC_289706625,289706625,Ks,,159,0,no_data,,"40k | 6k | 22k | some over 15k, abort | 10k"
+20241219,TIC_333620087,333620087,Ks,,3,0,no_data,,I can't see anything | still | cloud is blocking it completely
+20241219,TIC_345778835,345778835,Ks,,32,0,no_data,,"looks ok, 2k | 12k | 8k to start. Dropped to 6k, but still round. 303 bad, 316 15k,"
+20241219,TIC_46739994,46739994,Ks,,14,0,no_data,,"Too much wind. Can't stablize | A little elongated. 8k | Still elongated, but better. 10k | lost at 490 and aborted last. Can't tell for sure if the elongation is binary or wind | ok"
+20241219,TIC_471012349,471012349,Ks,,2,0,no_data,,"loops not closed yet | Too faint, blocked by clouds"
+20241219,TIC_60764070,60764070,Ks,,128,0,no_data,,"11k | 501 20k, abort | 6k | too bright. 27k | 10k"
+20241219,TIC_77552918,77552918,Ks,,54,0,no_data,,"3k | 8k | 6k,11k | 835 overexposed "
