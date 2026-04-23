@@ -268,6 +268,37 @@ def _run_single_filter(target: str, filt: str, object_list: list[str],
     # 6. Sigma clip (600x600 crop baked into helper)
     flat_darkcor_sc = sigma_clip(obj_have, flat_darkcor)
 
+    # 6b. Drop sparse exposure-time groups. make_master_sky requires
+    # >= 3 of 5 dither positions populated within each exposure-time group;
+    # when only 1-4 frames exist at a given ITIME the notebook hits an
+    # undefined-variable path ("exposuretimes[i]"/"explist[i]" / IndexError).
+    # Filter those groups out before sky subtraction.
+    from collections import Counter as _Counter
+    itime_counts = _Counter()
+    for n in obj_have:
+        try:
+            itime_counts[round(float(fits.getheader(datadir / n)["ITIME"]) / 1000.0, 3)] += 1
+        except Exception:
+            pass
+    MIN_FRAMES_PER_ITIME = 5
+    keep_itimes = {t for t, c in itime_counts.items() if c >= MIN_FRAMES_PER_ITIME}
+    dropped_itimes = {t: c for t, c in itime_counts.items() if c < MIN_FRAMES_PER_ITIME}
+    if dropped_itimes:
+        print(f"    dropping sparse exposure groups (< {MIN_FRAMES_PER_ITIME} frames): "
+              f"{dropped_itimes}")
+    def _itime(name):
+        try:
+            return round(float(fits.getheader(datadir / name)["ITIME"]) / 1000.0, 3)
+        except Exception:
+            return None
+    obj_have_full = obj_have
+    obj_have = [n for n in obj_have if _itime(n) in keep_itimes]
+    if len(obj_have) < 5:
+        raise RuntimeError(
+            f"after sparse-itime filter, only {len(obj_have)} frames remain "
+            f"(counts={dict(itime_counts)})")
+    flat_darkcor_sc = {n: flat_darkcor_sc[n] for n in obj_have if n in flat_darkcor_sc}
+
     # 7. Sky subtraction (dither aware, per exposure time)
     master_sky, exp_dict, center = make_master_sky(
         obj_have, flat_darkcor_sc, str(datadir) + "/")

@@ -85,15 +85,16 @@ def make_master_sky(object_list, flat_darkcor_sigmacut_data, datadir):
 
         min_dither = np.min(nonzero)  # wanna know the smallest number of nonzero positions
 
-        # If we don't have enough dither positions, this doesn't work
+        # If we don't have enough dither positions, this doesn't work.
+        # The original notebook referenced undefined names here
+        # (exposuretimes[i], explist[i]); raise cleanly so the caller can
+        # skip this filter rather than crash deep in the stack.
         print('Positions = ' + str(pos))
         if pos < 3:
-            print('Exposure Time: ' + str(exposuretimes[i]))
-            print('Gonna delete: ')
-            print(explist[i])
-            for obj in exp_dict[time]:
-                object_list.remove(obj)
-                continue
+            raise RuntimeError(
+                f"Only {pos} dither position(s) populated at exp={time}s "
+                f"(positions={positions}); need >= 3 for master-sky build."
+            )
 
         skycubelist = np.concatenate(
             [toprt[0:min_dither], toplft[0:min_dither], btmrt[0:min_dither], btmlft[0:min_dither],

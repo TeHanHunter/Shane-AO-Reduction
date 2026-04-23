@@ -128,11 +128,29 @@ def fitPSF(d,x0,y0,sigma,A):
 #################### USER DEFINITIONS #######################
 
 if __name__ == '__main__':
-    data_folder = '/Users/tehan/Downloads/'
-    # files = glob.glob(f'{data_folder}*.fits')
-    files = glob.glob(f'{data_folder}TOI_5916_final.fits')
+    import argparse
+    import sys as _sys
+    _ap = argparse.ArgumentParser()
+    _ap.add_argument("--input-glob", default="/Users/tehan/Downloads/TOI_5916_final.fits",
+                     help="Glob pattern of *_final.fits files to process.")
+    _ap.add_argument("--input-file", default=None,
+                     help="Single file to process (overrides --input-glob).")
+    _args, _rest = _ap.parse_known_args()
+    if _args.input_file:
+        files = [_args.input_file]
+        data_folder = os.path.dirname(_args.input_file).rstrip("/") + "/"
+    else:
+        files = glob.glob(_args.input_glob)
+        data_folder = os.path.dirname(_args.input_glob).rstrip("/") + "/"
+    # Headless: suppress plt.show() so we can run in batch.
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as _plt
+    _plt.show = lambda *a, **k: None
     for i in range(len(files)):
         filename = os.path.basename(files[i])
+        # Override data_folder per file when a single file was passed
+        data_folder = os.path.dirname(files[i]).rstrip("/") + "/"
         # Minimum magnitude contrast to be explored:
         min_m = 0
         # Maximum magnitude contrast to be explored:
