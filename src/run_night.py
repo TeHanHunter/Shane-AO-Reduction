@@ -50,6 +50,7 @@ from dark_correct import generate_master_darks, dark_correct  # noqa: E402
 from flat_field import make_master_flats, flat_field  # noqa: E402
 from sky_subtraction import make_master_sky, sky_subtract  # noqa: E402
 from utils import sigma_clip, image_shift  # noqa: E402
+from flat_utils import is_flat_object  # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -96,7 +97,8 @@ def pick_target_frames(header_map: dict[str, dict], target_sanitized: str) -> li
 
 
 def pick_flat_dark(header_map: dict[str, dict]):
-    flats = [n for n, m in header_map.items() if "flat" in m["OBJECT"].lower()]
+    # is_flat_object handles sky/dome/lamp flat variants (see flat_utils).
+    flats = [n for n, m in header_map.items() if is_flat_object(m["OBJECT"])]
     darks = [n for n, m in header_map.items() if "dark" in m["OBJECT"].lower()]
     drkhdr = []
     for d in darks:

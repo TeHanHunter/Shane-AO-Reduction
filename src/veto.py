@@ -20,6 +20,14 @@ import numpy as np
 from astropy.io import fits
 from scipy.ndimage import gaussian_filter
 
+# Shane AO flats come in sky / dome / lamp flavors. Use the centralized
+# detector so veto.py matches run_night.py and the notebook behavior.
+import sys as _sys
+_HERE = Path(__file__).resolve().parent
+if str(_HERE) not in _sys.path:
+    _sys.path.insert(0, str(_HERE))
+from flat_utils import is_flat_object  # noqa: E402
+
 
 def guess_gaussian_parameters(d: np.ndarray):
     """Return (x0, y0, sigma, A) for a rough Gaussian centroid + width.
@@ -49,7 +57,7 @@ def frame_counts(fits_path: str, center=(1100, 730), half_window=200) -> float:
     data = fits.getdata(fits_path)
     cx, cy = center
     win = data[cy - half_window:cy + half_window, cx - half_window:cx + half_window]
-    if "flat" in obj.lower():
+    if is_flat_object(obj):
         return float(np.mean(win))
     try:
         x0, y0, _sigma, _A = guess_gaussian_parameters(win)
