@@ -22,6 +22,14 @@ def make_master_flats(flat_list, filter, darkcor_data_out, datadir):
             continue
 
     #making our master flat for this particular filter
+    # Drop any flats whose dark-correction failed (not in darkcor_data_out).
+    # This happens when a flat was taken at an exposure time for which no
+    # matching dark frame exists for that night.
+    flat_filt_list = [f for f in flat_filt_list if f in darkcor_data_out]
+    if not flat_filt_list:
+        raise RuntimeError(
+            f"no dark-corrected flats available for filter {filter}"
+        )
     flatcube = np.stack([darkcor_data_out[flat_frame] for flat_frame in flat_filt_list],axis=0)
     master_flat = np.average(flatcube, axis=0)
     normalized_master_flat = master_flat/np.mean(master_flat)
