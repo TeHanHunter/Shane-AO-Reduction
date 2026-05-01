@@ -178,9 +178,16 @@ def weighted_centroid(image, percentile=99, window_size=100):
     threshold = np.median(window) + 3 * np.std(window)
     binary_mask = np.where(window > threshold, 1, 0)
     total_flux = np.sum(binary_mask)  # calculate total flux of star
+    # Bad-seeing fallback: when median+3sigma exceeds the window max,
+    # the binary mask is empty -> divide by zero -> NaN. Fall back to
+    # the percentile-based peak we already located in `max_idx`.
+    if total_flux == 0:
+        return int(max_idx[1]), int(max_idx[0])
     x, y = np.meshgrid(np.arange(window.shape[1]), np.arange(window.shape[0]))  # create x and y grids
     x0 = np.sum(x * binary_mask) / total_flux + xmin # calculate x centroid
     y0 = np.sum(y * binary_mask) / total_flux + ymin # calculate y centroid
+    if not (np.isfinite(x0) and np.isfinite(y0)):
+        return int(max_idx[1]), int(max_idx[0])
 
     plt.imshow(image)
     plt.scatter(x0, y0, c='r', s=20)

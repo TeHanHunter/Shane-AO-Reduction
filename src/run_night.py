@@ -299,9 +299,20 @@ def _run_single_filter(target: str, filt: str, object_list: list[str],
             f"(counts={dict(itime_counts)})")
     flat_darkcor_sc = {n: flat_darkcor_sc[n] for n in obj_have if n in flat_darkcor_sc}
 
-    # 7. Sky subtraction (dither aware, per exposure time)
+    # 7. Sky subtraction (dither aware, per exposure time).
+    # make_master_sky may drop ITIME groups with <3 distinct dither
+    # positions, so refresh obj_have to only include frames from the
+    # surviving groups before passing to sky_subtract / image_shift.
     master_sky, exp_dict, center = make_master_sky(
         obj_have, flat_darkcor_sc, str(datadir) + "/")
+    surviving_frames = set()
+    for _t, _frames in exp_dict.items():
+        surviving_frames.update(_frames)
+    dropped = [n for n in obj_have if n not in surviving_frames]
+    if dropped:
+        print(f"    dropping {len(dropped)} frame(s) from sparse-dither ITIME "
+              f"groups before stack")
+    obj_have = [n for n in obj_have if n in surviving_frames]
     sky_flat_darkcor = sky_subtract(
         obj_have, list(master_sky.keys()), flat_darkcor_sc, exp_dict, master_sky)
 

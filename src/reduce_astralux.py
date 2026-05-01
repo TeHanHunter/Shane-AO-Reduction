@@ -228,8 +228,10 @@ if __name__ == '__main__':
         radii_step = np.median(fwhms)
         N = np.median(fwhms)
 
-        # Convert the radius step to int:
-        radii_step = int(radii_step)
+        # Convert the radius step to int. Floor at 1 px so a degenerate
+        # PSF fit (FWHM < 1 px from awful seeing) doesn't yield
+        # ZeroDivisionError downstream in np.arange().
+        radii_step = max(1, int(radii_step))
         print(radii_step)
         # Get centroids:
         x0,y0 = out_params['x0'].value,out_params['y0'].value

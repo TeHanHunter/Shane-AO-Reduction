@@ -85,16 +85,15 @@ def make_master_sky(object_list, flat_darkcor_sigmacut_data, datadir):
 
         min_dither = np.min(nonzero)  # wanna know the smallest number of nonzero positions
 
-        # If we don't have enough dither positions, this doesn't work.
-        # The original notebook referenced undefined names here
-        # (exposuretimes[i], explist[i]); raise cleanly so the caller can
-        # skip this filter rather than crash deep in the stack.
+        # If we don't have enough dither positions, drop just this
+        # ITIME group rather than failing the whole filter — other
+        # ITIME groups for the same target may be reducible.
         print('Positions = ' + str(pos))
         if pos < 3:
-            raise RuntimeError(
-                f"Only {pos} dither position(s) populated at exp={time}s "
-                f"(positions={positions}); need >= 3 for master-sky build."
-            )
+            print(f"  WARN: only {pos} dither position(s) at exp={time}s "
+                  f"(positions={positions}); skipping this ITIME group")
+            del exp_dict[time]
+            continue
 
         skycubelist = np.concatenate(
             [toprt[0:min_dither], toplft[0:min_dither], btmrt[0:min_dither], btmlft[0:min_dither],
@@ -102,6 +101,11 @@ def make_master_sky(object_list, flat_darkcor_sigmacut_data, datadir):
         skycube = np.stack([flat_darkcor_sigmacut_data[science_frame] for science_frame \
                             in skycubelist], axis=0)
         master_sky_dict[time] = np.median(skycube, axis=0)
+
+    if not master_sky_dict:
+        raise RuntimeError(
+            "no ITIME group passed the >= 3 dither-position requirement"
+        )
 
     return master_sky_dict, exp_dict, center
 
