@@ -84,24 +84,72 @@ Failed:
 
 Raws deleted post-commit.
 
+## Night 20241217 (raws delivered post-Apr-2026; processed 2026-05-01)
+
+**Status: done.**
+
+Reduced (5 targets, 6 final.fits):
+- TIC_352409590 Ks
+- TIC_35760711 Ks
+- TIC_435903839 Ks
+- TIC_12632044 Ks
+- TIC_172572159 J + Ks
+
+Failed (NaN-centroid in sky subtraction):
+- TIC_257397333 Ks
+- TIC_60764070 Ks
+
+Skipped (too few frames after veto): TIC_283866910, TIC_117880865,
+TIC_77552918, TIC_364898.
+
+## Night 20241219 (raws delivered post-Apr-2026; processed 2026-05-01)
+
+**Status: done.**
+
+Reduced (9 targets, 9 final.fits):
+- TIC_148251101 Ks
+- TIC_151058955 Ks
+- TIC_10056120 Ks
+- TIC_46739994 Ks
+- TIC_265168621 Ks
+- TIC_60764070 Ks
+- TIC_149766251 Ks
+- TIC_77552918 Ks
+
+Failed (single-dither-position at one ITIME):
+- TIC_289706625 Ks
+
+Skipped (too few frames after veto): TIC_345778835, TIC_117880865,
+TIC_333620087, TIC_471012349.
+
 ## Phase F — contrast curves
 
-All 22 `*_final*.fits` passed through `src/reduce_astralux.py --input-file`
-on 2026-04-23. Each produced a `TIC_<id>_final[_filter_X]/` directory
-containing `model_image.fits`, `residual_image.fits`,
-`contrast_curve_*.dat`, `out_params.pkl`, and two PNGs. Three 08-19
+All 22 2024B-original `*_final*.fits` passed through
+`src/reduce_astralux.py --input-file` on 2026-04-23. Three 08-19
 targets (`TIC_313874586_final_filter_J`, `TIC_352409577_final`,
 `TIC_60922830_final`) needed a second pass with a 600s per-file timeout.
 
+The 14 December `*_final*.fits` (6 from 12-17 + 8 from 12-19) passed
+through `reduce_astralux.py` on 2026-05-01 with no per-file timeouts.
+
+## SURFSUP integration
+
+After each reduction batch, `pipeline/shaneao_binary_detect.py` and
+`pipeline/merge_shaneao_into_v2.py` (in the SURFSUP repo) refresh the
+`ao_*` columns in `paper_tables/surfsup_master_v2.csv`. The 2026-05-01
+December merge added 13 targets to v2 (TIC_172572159 and TIC_352409590
+already had Oct/Jan epochs and were updated to multi-night entries);
+all 13 returned `ao_binary_flag=single`.
+
 ## Final tally (2024B)
 
-- 25 targets had raw data on disk (4 tar archives extracted + deleted).
-- **18 targets** reduced to at least one `final.fits`; 22 per-filter
+- 39 targets had raw data on disk (6 nights extracted; Aug/Oct raws
+  deleted post-commit).
+- **32 targets** reduced to at least one `final.fits`; 36 per-filter
   outputs in total.
-- 7 targets failed (mostly single-dither-position or sparse-exposure
-  cases; one NaN crash).
-- 24 targets appear in the obs log only — no tars delivered for
-  2024-12-17 and 2024-12-19.
+- 10 targets failed (mostly single-dither-position or sparse-exposure
+  cases; three NaN crashes).
+- 11 targets remain in the obs log only — too few frames after veto.
 
 See `Raw_Data/2024B_summary.md` for the per-target table and
 `Raw_Data/2024B_summary.csv` for the machine-readable version.

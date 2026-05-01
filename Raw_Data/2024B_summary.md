@@ -52,14 +52,14 @@ Source: `Raw_Data/2024B_obs_log.csv` + `Raw_Data/2024B_Results/`
 | target | TIC | filt (plan / produced) | N obs | N vet | result | final.fits |
 | --- | --- | --- | ---: | ---: | --- | --- |
 | TIC_117880865 | 117880865 | Ks / — | 6 | 0 | **no_data** | — |
-| TIC_12632044 | 12632044 | Ks / — | 17 | 0 | **no_data** | — |
-| TIC_172572159 | 172572159 | J,Ks / — | 20 | 0 | **no_data** | — |
+| TIC_12632044 | 12632044 | Ks / Ks | 17 | 0 | **no_data** | TIC_12632044_final.fits |
+| TIC_172572159 | 172572159 | J,Ks / J,Ks | 20 | 0 | **no_data** | TIC_172572159_final_filter_J.fits;<br>TIC_172572159_final_filter_Ks.fits |
 | TIC_257397333 | 257397333 | Ks / — | 12 | 0 | **no_data** | — |
 | TIC_283866910 | 283866910 | Ks / — | 11 | 0 | **no_data** | — |
-| TIC_352409590 | 352409590 | Ks / — | 11 | 0 | **no_data** | — |
-| TIC_35760711 | 35760711 | Ks / — | 11 | 0 | **no_data** | — |
+| TIC_352409590 | 352409590 | Ks / Ks | 11 | 0 | **no_data** | TIC_352409590_final.fits |
+| TIC_35760711 | 35760711 | Ks / Ks | 11 | 0 | **no_data** | TIC_35760711_final.fits |
 | TIC_364898 | 364898 | J,Ks / — | 73 | 0 | **no_data** | — |
-| TIC_435903839 | 435903839 | Ks / — | 11 | 0 | **no_data** | — |
+| TIC_435903839 | 435903839 | Ks / Ks | 11 | 0 | **no_data** | TIC_435903839_final.fits |
 | TIC_60764070 | 60764070 | Ks / — | 5 | 0 | **no_data** | — |
 | TIC_77552918 | 77552918 | Ks / — | 1 | 0 | **no_data** | — |
 
@@ -67,19 +67,19 @@ Source: `Raw_Data/2024B_obs_log.csv` + `Raw_Data/2024B_Results/`
 
 | target | TIC | filt (plan / produced) | N obs | N vet | result | final.fits |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| TIC_10056120 | 10056120 | Ks / — | 28 | 0 | **no_data** | — |
+| TIC_10056120 | 10056120 | Ks / Ks | 28 | 0 | **no_data** | TIC_10056120_final.fits |
 | TIC_117880865 | 117880865 | Ks / — | 13 | 0 | **no_data** | — |
-| TIC_148251101 | 148251101 | J,Ks / — | 128 | 0 | **no_data** | — |
-| TIC_149766251 | 149766251 | Ks / — | 32 | 0 | **no_data** | — |
-| TIC_151058955 | 151058955 | Ks / — | 93 | 0 | **no_data** | — |
-| TIC_265168621 | 265168621 | Ks / — | 25 | 0 | **no_data** | — |
+| TIC_148251101 | 148251101 | J,Ks / Ks | 128 | 0 | **no_data** | TIC_148251101_final_filter_Ks.fits |
+| TIC_149766251 | 149766251 | Ks / Ks | 32 | 0 | **no_data** | TIC_149766251_final.fits |
+| TIC_151058955 | 151058955 | Ks / Ks | 93 | 0 | **no_data** | TIC_151058955_final.fits |
+| TIC_265168621 | 265168621 | Ks / Ks | 25 | 0 | **no_data** | TIC_265168621_final.fits |
 | TIC_289706625 | 289706625 | Ks / — | 159 | 0 | **no_data** | — |
 | TIC_333620087 | 333620087 | Ks / — | 3 | 0 | **no_data** | — |
 | TIC_345778835 | 345778835 | Ks / — | 32 | 0 | **no_data** | — |
-| TIC_46739994 | 46739994 | Ks / — | 14 | 0 | **no_data** | — |
+| TIC_46739994 | 46739994 | Ks / Ks | 14 | 0 | **no_data** | TIC_46739994_final.fits |
 | TIC_471012349 | 471012349 | Ks / — | 2 | 0 | **no_data** | — |
-| TIC_60764070 | 60764070 | Ks / — | 128 | 0 | **no_data** | — |
-| TIC_77552918 | 77552918 | Ks / — | 54 | 0 | **no_data** | — |
+| TIC_60764070 | 60764070 | Ks / Ks | 128 | 0 | **no_data** | TIC_60764070_final.fits |
+| TIC_77552918 | 77552918 | Ks / Ks | 54 | 0 | **no_data** | TIC_77552918_final.fits |
 
 ## Totals
 

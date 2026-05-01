@@ -25,26 +25,26 @@ night,target,tic_id,filters_planned,filters_produced,n_frames_observed,n_frames_
 20241017,TIC_388814426,388814426,J,,3,3,failed,,"only 400.  | 5k, not bad. First time taking this long of an exposure. The wind was kind to me. | closing... Wind average 49mph>45mph closure"
 20241017,TOI-6158,,Ks,,3,2,failed,,"Lost the star | Try locking in again, failed | Try again. No"
 20241217,TIC_117880865,117880865,Ks,,6,0,no_data,,All junk--wind
-20241217,TIC_12632044,12632044,Ks,,17,0,no_data,,"Tried to do a script, but encountered multiple problems, mainly telescope drive control.  Aborted, these are all junk."
-20241217,TIC_172572159,172572159,"J,Ks",,20,0,no_data,,
+20241217,TIC_12632044,12632044,Ks,Ks,17,0,no_data,Raw_Data/2024B_Results/20241217/TIC_12632044_final.fits,"Tried to do a script, but encountered multiple problems, mainly telescope drive control.  Aborted, these are all junk."
+20241217,TIC_172572159,172572159,"J,Ks","J,Ks",20,0,no_data,Raw_Data/2024B_Results/20241217/TIC_172572159_final_filter_J.fits;Raw_Data/2024B_Results/20241217/TIC_172572159_final_filter_Ks.fits,
 20241217,TIC_257397333,257397333,Ks,,12,0,no_data,,Seeing looks awful; ~4k peak counts
 20241217,TIC_283866910,283866910,Ks,,11,0,no_data,,304-307 overexposed
-20241217,TIC_352409590,352409590,Ks,,11,0,no_data,,~6k counts | ~8k counts
-20241217,TIC_35760711,35760711,Ks,,11,0,no_data,,~10K peak counts
+20241217,TIC_352409590,352409590,Ks,Ks,11,0,no_data,Raw_Data/2024B_Results/20241217/TIC_352409590_final.fits,~6k counts | ~8k counts
+20241217,TIC_35760711,35760711,Ks,Ks,11,0,no_data,Raw_Data/2024B_Results/20241217/TIC_35760711_final.fits,~10K peak counts
 20241217,TIC_364898,364898,"J,Ks",,73,0,no_data,,"Faint secondary about 15"" away? 332-333, 337, 340, 343-344, 352, 355 overexposed | 374, 385, 396 overexposed"
-20241217,TIC_435903839,435903839,Ks,,11,0,no_data,,
+20241217,TIC_435903839,435903839,Ks,Ks,11,0,no_data,Raw_Data/2024B_Results/20241217/TIC_435903839_final.fits,
 20241217,TIC_60764070,60764070,Ks,,5,0,no_data,,"Tried to run a script, but 403-404 wrecked by wind, aborting"
 20241217,TIC_77552918,77552918,Ks,,1,0,no_data,,Garbage; too much wind
-20241219,TIC_10056120,10056120,Ks,,28,0,no_data,,"Try something in the north. This is faint. 10k | 13k, 433 19k, 434 20k, 435 aborted. Condition improved and overexposed. | 10k | Redid background after this | Done, no problem"
+20241219,TIC_10056120,10056120,Ks,Ks,28,0,no_data,Raw_Data/2024B_Results/20241219/TIC_10056120_final.fits,"Try something in the north. This is faint. 10k | 13k, 433 19k, 434 20k, 435 aborted. Condition improved and overexposed. | 10k | Redid background after this | Done, no problem"
 20241219,TIC_117880865,117880865,Ks,,13,0,no_data,,"3k | 11k | 419 17k, 427 is bad, aborted 428, might be wind. This might be enough"
-20241219,TIC_148251101,148251101,"J,Ks",,128,0,no_data,,"AO not perfect, reopen the loop | 6k | 13k-16k | 12k | Seems like a small bump to the west; The bump looks less prominent at the second dithering position. The bump might be an AO artifact.  | Try a J and see. Not seeing a binary (4k counts) | Still very round."
-20241219,TIC_149766251,149766251,Ks,,32,0,no_data,,"Wrong coords, wasted 10 minutes here. 14k | 13k | good"
-20241219,TIC_151058955,151058955,Ks,,93,0,no_data,,"25k | 8k,10k | Some fluctuations. Object round."
-20241219,TIC_265168621,265168621,Ks,,25,0,no_data,,"3k | 10k | aborted, cloud | 12k | Holding on. Fresh bg. | 477 15k, aborted the last two"
+20241219,TIC_148251101,148251101,"J,Ks",Ks,128,0,no_data,Raw_Data/2024B_Results/20241219/TIC_148251101_final_filter_Ks.fits,"AO not perfect, reopen the loop | 6k | 13k-16k | 12k | Seems like a small bump to the west; The bump looks less prominent at the second dithering position. The bump might be an AO artifact.  | Try a J and see. Not seeing a binary (4k counts) | Still very round."
+20241219,TIC_149766251,149766251,Ks,Ks,32,0,no_data,Raw_Data/2024B_Results/20241219/TIC_149766251_final.fits,"Wrong coords, wasted 10 minutes here. 14k | 13k | good"
+20241219,TIC_151058955,151058955,Ks,Ks,93,0,no_data,Raw_Data/2024B_Results/20241219/TIC_151058955_final.fits,"25k | 8k,10k | Some fluctuations. Object round."
+20241219,TIC_265168621,265168621,Ks,Ks,25,0,no_data,Raw_Data/2024B_Results/20241219/TIC_265168621_final.fits,"3k | 10k | aborted, cloud | 12k | Holding on. Fresh bg. | 477 15k, aborted the last two"
 20241219,TIC_289706625,289706625,Ks,,159,0,no_data,,"40k | 6k | 22k | some over 15k, abort | 10k"
 20241219,TIC_333620087,333620087,Ks,,3,0,no_data,,I can't see anything | still | cloud is blocking it completely
 20241219,TIC_345778835,345778835,Ks,,32,0,no_data,,"looks ok, 2k | 12k | 8k to start. Dropped to 6k, but still round. 303 bad, 316 15k,"
-20241219,TIC_46739994,46739994,Ks,,14,0,no_data,,"Too much wind. Can't stablize | A little elongated. 8k | Still elongated, but better. 10k | lost at 490 and aborted last. Can't tell for sure if the elongation is binary or wind | ok"
+20241219,TIC_46739994,46739994,Ks,Ks,14,0,no_data,Raw_Data/2024B_Results/20241219/TIC_46739994_final.fits,"Too much wind. Can't stablize | A little elongated. 8k | Still elongated, but better. 10k | lost at 490 and aborted last. Can't tell for sure if the elongation is binary or wind | ok"
 20241219,TIC_471012349,471012349,Ks,,2,0,no_data,,"loops not closed yet | Too faint, blocked by clouds"
-20241219,TIC_60764070,60764070,Ks,,128,0,no_data,,"11k | 501 20k, abort | 6k | too bright. 27k | 10k"
-20241219,TIC_77552918,77552918,Ks,,54,0,no_data,,"3k | 8k | 6k,11k | 835 overexposed "
+20241219,TIC_60764070,60764070,Ks,Ks,128,0,no_data,Raw_Data/2024B_Results/20241219/TIC_60764070_final.fits,"11k | 501 20k, abort | 6k | too bright. 27k | 10k"
+20241219,TIC_77552918,77552918,Ks,Ks,54,0,no_data,Raw_Data/2024B_Results/20241219/TIC_77552918_final.fits,"3k | 8k | 6k,11k | 835 overexposed "
